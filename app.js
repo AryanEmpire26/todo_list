@@ -48,11 +48,11 @@ app.get("/", function(req,res){
         if (foundItems.length===0) { // if databse is empty then insert the below if something already present then dont run below code.
 
             itemsSchema.insertMany(defaultItems,function(err){
-                if (err) {
-                    console.log(err);
-                } else {
-                    console.log("success");
-                }
+                // if (err) {
+                //     // console.log(err);
+                // } else {
+                //     // console.log("success");
+                // }
             });
             res.redirect("/"); //after first time insertion this code will redirect to home route and in second time code will not run if statement rather it will run else because db will have some date.
         } else {
@@ -70,7 +70,7 @@ app.post("/",function(req,res){
     if (listName === "Today") {
         item.save(function(err){
             if(err){
-                console.log(err);
+                // console.log(err);
             }
             else{
                 
@@ -81,7 +81,7 @@ app.post("/",function(req,res){
 else{
     List.findOne({ name: listName }, function(err, foundList) {
         if (err) {
-            console.log(err);
+            // console.log(err);
         } 
         else {
             foundList.items.push(item);
@@ -128,7 +128,7 @@ app.post("/delete",function(req,res){
     if (listName === "Today") {
     itemsSchema.findByIdAndRemove(checkedItemId,function(err){
         if (!err) {
-            console.log("Successfylly deleted checked item.");
+            // console.log("Successfylly deleted checked item.");
             res.redirect("/");
         } 
     });
